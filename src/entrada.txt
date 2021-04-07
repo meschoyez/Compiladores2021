@@ -1,0 +1,14 @@
+int x ;
+int y_2 = x / 4 + x ;
+int y_x_2 = 45;
+int zyx, xy, wq = x;
+
+while (x < 3)
+{
+    int x;
+    x = 1;
+}
+
+while (x < 3)
+    x = xs + 5 + y - 8;
+
