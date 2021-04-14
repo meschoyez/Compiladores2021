@@ -1,0 +1,10 @@
+int x = 0;
+
+int main () {
+    int y = x + 10;
+
+    if (y == 4)
+        x = 8;
+
+    return 0;
+  }
