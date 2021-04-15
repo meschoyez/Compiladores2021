@@ -1,0 +1,72 @@
+Analisis Sintáctico
+
+Genera un árbol sintáctico (parse tree)
+
+El árbol tiene:
+ 1- Raíz -> Símbolo inicial -> regla de inicio
+ 2- Nodos -> Reglas gramaticales
+ 3- Hojas -> Terminales (tokens)
+
+ Nodos tienen 1 o más hijos
+
+----
+
+Descendente  -> ANTLR
+    desde la raíz hacia las Hojas
+
+acciones -> derivar y match
+
+s : '(' s ')' s
+  |
+  ;
+
+Entrada ->  (())()
+
+$ s            (())() $ derivar
+$ s ) s (      (())() $ match
+$ s ) s         ())() $ derivar
+$ s ) s ) s (   ())() $ match
+$ s ) s ) s      ))() $ derivar
+$ s ) s )        ))() $ match
+$ s ) s           )() $ derivar
+$ s )             )() $ match
+$ s                () $ derivar
+$ s ) s (          () $ match
+$ s ) s             ) $ derivar
+$ s )               ) $ match
+$ s                   $ derivar
+$                     $ OK
+
+
+               s [25]
+          /   |    \     \
+   [26] (     s [27] )    s [33]
+             /| \ \          \  \  \  \
+           (  s  )  s [31]   (   s  )  s [37]
+              |     |            |     |
+
+Entrada ->  ())()
+
+$ s             ())() $ derivar
+$ s ) s (       ())() $ match
+$ s ) s          ))() $ derivar
+$ s )            ))() $ match
+$ s               )() $ derivar
+$                 )() $ Error
+
+
+Entrada ->  ((()
+
+$ s              ((() $ derivar
+$ s ) s (        ((() $ match
+$ s ) s           (() $ derivar
+$ s ) s ) s (     (() $ match
+$ s ) s ) s        () $ derivar
+$ s ) s ) s ) s (  () $ match
+$ s ) s ) s ) s     ) $ derivar
+$ s ) s ) s )       ) $ match
+$ s ) s ) s           $ derivar
+$ s ) s )             $ Error
+
+Ascendente
+
