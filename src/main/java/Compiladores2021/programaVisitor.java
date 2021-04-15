@@ -25,6 +25,12 @@ public interface programaVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitInstrucciones(programaParser.InstruccionesContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link programaParser#bloque}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBloque(programaParser.BloqueContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link programaParser#instruccion}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

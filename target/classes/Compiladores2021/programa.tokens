@@ -1,2 +1,11 @@
-ENTERO=1
-LINEA=2
+LLAVEA=1
+LLAVEC=2
+INT=3
+WHILE=4
+ENTERO=5
+ID=6
+LINEA=7
+'{'=1
+'}'=2
+'int'=3
+'while'=4

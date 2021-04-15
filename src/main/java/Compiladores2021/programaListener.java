@@ -30,6 +30,16 @@ public interface programaListener extends ParseTreeListener {
 	 */
 	void exitInstrucciones(programaParser.InstruccionesContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link programaParser#bloque}.
+	 * @param ctx the parse tree
+	 */
+	void enterBloque(programaParser.BloqueContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link programaParser#bloque}.
+	 * @param ctx the parse tree
+	 */
+	void exitBloque(programaParser.BloqueContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link programaParser#instruccion}.
 	 * @param ctx the parse tree
 	 */
