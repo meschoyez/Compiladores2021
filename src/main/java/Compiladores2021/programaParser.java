@@ -1,7 +1,4 @@
 // Generated from /home/meschoyez/Docencia/UBP/TC/TC2021/Compiladores2021/src/main/java/Compiladores2021/programa.g4 by ANTLR 4.8
-
-package Compiladores2021;
-
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -19,7 +16,7 @@ public class programaParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		LLAVEA=1, LLAVEC=2, INT=3, WHILE=4, ENTERO=5, ID=6, LINEA=7;
+		LLAVEA=1, LLAVEC=2, INT=3, WHILE=4, ENTERO=5, ID=6, LINEA=7, WS=8;
 	public static final int
 		RULE_programa = 0, RULE_instrucciones = 1, RULE_bloque = 2, RULE_instruccion = 3;
 	private static String[] makeRuleNames() {
@@ -37,7 +34,7 @@ public class programaParser extends Parser {
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, "LLAVEA", "LLAVEC", "INT", "WHILE", "ENTERO", "ID", "LINEA"
+			null, "LLAVEA", "LLAVEC", "INT", "WHILE", "ENTERO", "ID", "LINEA", "WS"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -307,7 +304,7 @@ public class programaParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\t\37\4\2\t\2\4\3"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\n\37\4\2\t\2\4\3"+
 		"\t\3\4\4\t\4\4\5\t\5\3\2\3\2\3\2\3\2\3\3\3\3\3\3\3\3\3\3\3\3\3\3\5\3\26"+
 		"\n\3\3\4\3\4\3\4\3\4\3\5\3\5\3\5\3\5\2\2\6\2\4\6\b\2\2\2\34\2\n\3\2\2"+
 		"\2\4\25\3\2\2\2\6\27\3\2\2\2\b\33\3\2\2\2\n\13\b\2\1\2\13\f\5\4\3\2\f"+

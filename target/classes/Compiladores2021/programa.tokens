@@ -5,6 +5,7 @@ WHILE=4
 ENTERO=5
 ID=6
 LINEA=7
+WS=8
 '{'=1
 '}'=2
 'int'=3

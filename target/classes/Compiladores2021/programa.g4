@@ -19,7 +19,7 @@ ID : (LETRA | '_')(LETRA | DIGITO | '_')* ;
 
 LINEA : (LETRA | ENTERO | [ (){};+=])*'\n' ;
 
-// WS : [ \n\t\r]+ -> skip;
+WS : [ \n\t\r]+ -> skip;
 // OTRO : . ;
 
 
@@ -32,5 +32,18 @@ instrucciones : instruccion instrucciones
 
 bloque : LLAVEA instrucciones LLAVEC ;
 
-instruccion : LINEA { System.out.println("-> |" + $LINEA.getText().stripTrailing() + "|"); } ;
+instruccion : declaracion
+            | asignacion
+            | iwhile
+            ;
 
+// declaracion -> int x;
+//                double y;
+//                int z = 0;
+//                double w, q, t;
+//                int a = 5, b, c = 10;
+
+// asignacion -> x = 1;
+//               z = y;
+
+// iwhile -> while (x comp y) { instrucciones }

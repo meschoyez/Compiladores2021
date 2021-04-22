@@ -9,7 +9,7 @@ public class App {
     public static void main(String[] args) throws Exception {
         // create a CharStream that reads from file
         // CharStream input = CharStreams.fromFileName("src/entrada.txt");
-        CharStream input = CharStreams.fromFileName("src/codigo.txt");
+        CharStream input = CharStreams.fromFileName("src/llaves.txt");
 
         // create a lexer that feeds off of input CharStream
         programaLexer lexer = new programaLexer(input);

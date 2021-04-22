@@ -68,5 +68,60 @@ $ s ) s ) s )       ) $ match
 $ s ) s ) s           $ derivar
 $ s ) s )             $ Error
 
+
+-------------------
+
 Ascendente
+
+acciones -> desplazar y reducir
+
+s : '(' s ')' s
+  |
+  ;
+
+Entrada ->  (())()
+
+$              (())() $ desplazar
+$ (             ())() $ desplazar
+$ ( (            ))() $ reducir
+$ ( ( s          ))() $ desplazar
+$ ( ( s )         )() $ reducir
+$ ( ( s ) s       )() $ reducir
+$ ( s             )() $ desplazar
+$ ( s )            () $ desplazar
+$ ( s ) (           ) $ reducir
+$ ( s ) ( s         ) $ desplazar
+$ ( s ) ( s )         $ reducir
+$ ( s ) ( s ) s       $ reducir
+$ ( s ) s             $ reducir
+$ s                   $ OK
+
+
+              s
+      ---/ /   |  \
+     /   s     |    s
+    /  / /\ \  |   //\\
+    (  ( s ) s )  ( s ) s
+
+
+Entrada ->  ())()
+
+$               ())() $ desplazar
+$ (              ))() $ reducir
+$ ( s            ))() $ desplazar
+$ ( s )           )() $ reducir
+$ ( s ) s         )() $ reducir
+$ s               )() $ Error
+
+
+Entrada ->  ((()
+
+$               ((() $ desplazar
+$ (              (() $ desplazar
+$ ( (             () $ desplazar
+$ ( ( (            ) $ reducir
+$ ( ( ( s          ) $ desplazar
+$ ( ( ( s )          $ reducir
+$ ( ( ( s ) s        $ reducir
+$ ( ( s              $ Error
 
