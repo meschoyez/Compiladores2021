@@ -125,3 +125,83 @@ $ ( ( ( s )          $ reducir
 $ ( ( ( s ) s        $ reducir
 $ ( ( s              $ Error
 
+-------------
+
+AS Descendente
+
+exp : term e ;
+
+e : MAS   term e
+  | MENOS term e
+  |
+  ;
+
+term : ENTERO
+     ;
+
+Entrada --> 5 - 10 + 6
+
+$ exp                5 - 10 + 6 $ derivar
+$ e term             5 - 10 + 6 $ derivar
+$ e ENTERO           5 - 10 + 6 $ match
+$ e                    - 10 + 6 $ derivar
+$ e term MENOS         - 10 + 6 $ match
+$ e term                 10 + 6 $ match
+$ e                         + 6 $ derivar
+$ e term MAS                + 6 $ match
+$ e term                      6 $ match
+$ e                             $ derivar
+$                               $ OK
+
+Entrada --> 5 - + 10 + 6
+
+$ exp                5 - + 10 + 6 $ derivar
+$ e term             5 - + 10 + 6 $ match
+$ e                    - + 10 + 6 $ derivar
+$ e term MENOS         - + 10 + 6 $ match
+$ e term                 + 10 + 6 $ ERROR
+
+-------------
+
+AS Ascendente
+
+exp : term e ;
+
+e : MAS   term e
+  | MENOS term e
+  |
+  ;
+
+term : ENTERO
+     ;
+
+Entrada --> 5 - 10 + 6
+
+$                    5 - 10 + 6 $ desplazar
+$ 5                    - 10 + 6 $ reducir
+$ ENTERO               - 10 + 6 $ reducir
+$ term                 - 10 + 6 $ desplazar
+$ term MENOS             10 + 6 $ desplazar
+$ term MENOS term           + 6 $ desplazar
+$ term MENOS term MAS         6 $ desplazar
+$ term MENOS term MAS term      $ reducir
+$ term MENOS term MAS term e    $ reducir
+$ term MENOS term e             $ reducir
+$ term e                        $ reducir
+$ exp                           $ OK
+
+
+Entrada --> 5 - + 10 + 6
+
+$                    5 - + 10 + 6 $ desplazar
+$ term                 - + 10 + 6 $ desplazar
+$ term MENOS             + 10 + 6 $ desplazar
+$ term MENOS MAS           10 + 6 $ desplazar
+$ term MENOS MAS term         + 6 $ desplazar
+$ term MENOS MAS term MAS       6 $ desplazar
+$ term MENOS MAS term MAS term    $ reducir
+$ term MENOS MAS term MAS term e  $ reducir
+$ term MENOS MAS term e           $ reducir
+$ term MENOS e                    $ ERROR
+
+

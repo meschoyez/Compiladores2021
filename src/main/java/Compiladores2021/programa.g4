@@ -9,6 +9,14 @@ fragment DIGITO : [0-9] ;
 
 LLAVEA : '{' ;
 LLAVEC : '}' ;
+PARA : '(' ;
+PARC : ')' ;
+MAS : '+' ;
+MENOS : '-' ;
+MULT: '*' ;
+DIV : '/' ;
+ASIGN : '=' ;
+PYC : ';' ;
 
 INT : 'int' ;
 WHILE : 'while' ;
@@ -17,7 +25,6 @@ ENTERO : DIGITO+ ;
 
 ID : (LETRA | '_')(LETRA | DIGITO | '_')* ;
 
-LINEA : (LETRA | ENTERO | [ (){};+=])*'\n' ;
 
 WS : [ \n\t\r]+ -> skip;
 // OTRO : . ;
@@ -32,10 +39,33 @@ instrucciones : instruccion instrucciones
 
 bloque : LLAVEA instrucciones LLAVEC ;
 
-instruccion : declaracion
-            | asignacion
-            | iwhile
+instruccion : asignacion PYC
+            // | declaracion
+            // | iwhile
             ;
+
+asignacion : ID ASIGN opal ;
+
+opal : exp ;
+
+exp : term e ;
+
+e : MAS   term e
+  | MENOS term e
+  |
+  ;
+
+term : factor t;
+
+t : MULT factor t
+  | DIV  factor t
+  |
+  ;
+
+factor : ID
+       | ENTERO
+       | PARA exp PARC
+       ;
 
 // declaracion -> int x;
 //                double y;
