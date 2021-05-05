@@ -1,0 +1,41 @@
+@startuml TablaSimbolos
+
+class TablaSimbolos {
+    - List<Map<String, Id>> contextos
+    + buscarId ( id )
+    + buscarIdLocal ( id )
+    + addId ( id )
+}
+
+abstract class Id <<abstract>> {
+ - String token
+ - TipoDato tipoDato
+ - Boolean Inicializada
+ - Boolean Usada
+}
+
+class Variable {}
+
+class Funcion {
+    - List <TipoDato> argumentos
+}
+
+enum TipoDato {
+    VOID 
+    INT 
+    DOUBLE
+}
+
+interface List
+
+interface Map
+
+TablaSimbolos -> Id
+TablaSimbolos --> List
+List --> Map
+
+Id -> TipoDato
+Id <|-- Variable
+Id <|-- Funcion
+
+@enduml

@@ -1,0 +1,56 @@
+Tabla de símbolos
+
+La TS permite registrar los identificadores:
+ - nombres de variables
+ - nombre de las funciones
+ 
+Posiblemente, también palabras reservadas.
+
+¿Qué cosas necesitamos saber de un identificador? (1)
+
+ - Token (string)
+ - Tipo de dato
+ - Inicializada (definida)
+ - Usada
+ - Si es función, conocer argumentos (tipo de dato)
+                            `--> tamaño variable
+
+
+Opciones para implementarla
+ - Necesitamos que sea una clase (objetos) o
+          estructura de datos (imperativo)
+
+    + Si usamos clases, conviene herencia para
+        separar variables de funciones
+
+ - Necesitamos que sea una colección
+
+     + Podemos usar una lista enlazada
+     + Los más apropiado es un diccionario (Map)
+     + Simplifica el uso las mezcla de ambas
+        TS -> Lista de diccionarios
+
+Ejemplo de contextos:
+
+int x = 1;
+int main () {
+    int x = 5;
+    if ()
+    {
+        int x = 3;
+        x += 4;
+    }
+}
+
+
+Funcionalidades de la TS
+ - Buscar un identificador
+    - Buscar en el contexto local (p/incorporar)
+    - Buscar en todos los contextos (p/usar)
+ - Incorporar un identificador
+     `---> agrega el identificador en el contexto actual
+
+
+Clases para representar los identificadores
+ - Lo común de (1) en una superclase
+ - Las particularidades en las subclases
