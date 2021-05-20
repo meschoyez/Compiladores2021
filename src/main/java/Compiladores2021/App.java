@@ -11,6 +11,7 @@ public class App {
         // CharStream input = CharStreams.fromFileName("src/entrada.txt");
         // CharStream input = CharStreams.fromFileName("src/llaves.txt");
         CharStream input = CharStreams.fromFileName("src/asignaciones.txt");
+        // CharStream input = CharStreams.fromFileName("src/codigo.txt");
 
         // create a lexer that feeds off of input CharStream
         programaLexer lexer = new programaLexer(input);
@@ -22,10 +23,10 @@ public class App {
         programaParser parser = new programaParser(tokens);
                 
         // create Listener
-        // ExpRegBaseListener escucha = new Escucha();
+        programaBaseListener escucha = new MiListener();
 
         // Conecto el objeto con Listeners al parser
-        // parser.addParseListener(escucha);
+        parser.addParseListener(escucha);
 
         // Solicito al parser que comience indicando una regla gramatical
         // En este caso la regla es el simbolo inicial
