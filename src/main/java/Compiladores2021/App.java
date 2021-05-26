@@ -32,6 +32,9 @@ public class App {
         // En este caso la regla es el simbolo inicial
         // parser.s();
         ParseTree tree =  parser.programa();
-        System.out.println(tree);
+        // System.out.println(tree.toStringTree(parser));
+
+        MiVisitor caminante = new MiVisitor();
+        caminante.visit(tree);
     }
 }
