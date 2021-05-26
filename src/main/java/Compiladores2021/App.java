@@ -34,7 +34,9 @@ public class App {
         ParseTree tree =  parser.programa();
         // System.out.println(tree.toStringTree(parser));
 
-        MiVisitor caminante = new MiVisitor();
+        // MiVisitor caminante = new MiVisitor();
+        MiCaminante caminante = new MiCaminante();
         caminante.visit(tree);
+        System.out.println(caminante);
     }
 }
