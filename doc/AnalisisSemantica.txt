@@ -1,0 +1,57 @@
+Análisis Semántico
+
+Verifica la viabilidad del código fuente escrito
+  '+--> se puede convertir en código ejecutable
+
+No se puede verficar errores de interpretación de la
+tarea y errores de "lógica".
+
+Verificación de tipos permite controlar que los tipos 
+de datos usados sean apropiados:
+
+int x = 2, w;
+double y = 4.5, z;
+char a[5] = "Hola";
+z = x * y;   // promocion de tipos lo hace viable
+    '--> casteo de int a float -> no hay inconveniente
+
+w = z + y;   // promocion de tipos
+  '--> casteo del resultado -> produce perdida de precision
+
+a += x;  // aritmetica de punteros
+
+Python
+a = "hola"
+x = 3
+y = 3.7
+
+r = a + x  # Exception porque la concatenacion (+) no aplica sobre int
+r = x + a  # Exception porque a no es numero
+z = x * y  # promocion de tipos
+
+
+Java
+String a = "hola";
+Integer x = 3;
+
+String r = a + x;  // Invoca metodo toString()
+r = x + a;         // Invoca metodo toString()
+
+
+Con respecto a las funciones -> También hay verificación
+
+int f (int, int); // Solo requiere tipo de dato
+
+z = f(y, w);
+...
+int f (int x, int v) {
+
+}
+
+
+Sobrecarga de funciones (C no lo tiene)
+
+void   f (int);
+int    f (int);
+double f (double);
+double f (int, int);
