@@ -1,0 +1,89 @@
+Codigo de (hasta) 3 direcciones
+
+x = y op z  ->  forma general
+
+x = y
+x = y op cte 
+x = cte
+
+jmp
+label
+
+Vamos a necesitar:
+ -Generador de nombres de variables temporales
+     t0, t1, t2, ... , tn
+ - Generador de etiquetas
+     l0, l1, l2, ... , ln
+
+
+Transformar
+
+1) x = y / 5 + z * w - 1;
+
+t0 = y / 5
+t1 = z * w
+t2 = t0 + t1
+t3 = t2 - 1
+x = t3
+
+2) if (x < 0) {
+    y = z * 5;
+   }
+   else {
+    y = z * -5;
+   }
+
+t0 = x < 0
+ifnjmp t0, l1
+y = z * 5
+jmp l2
+label l1
+y = z * -5
+label l2
+
+3) x = 0;
+   while (x < 3) {
+       y = z * x;
+       x++;
+   }
+
+x = 0
+label l1
+t0 = x < 3
+ifnjmp t0, l2
+y = z * x
+x = x + 1
+jmp l1
+label l2
+
+4) for (x = 0; x < 3; x++) {
+    y = z * x;
+   }
+
+x = 0
+label l1
+t0 = x < 3
+ifnjmp t0, l2
+y = z * x
+x = x + 1
+jmp l1
+label l2
+
+5) x = f(y);
+
+push y
+push l10
+jmp l3  //(call f)
+label l10
+pop x
+
+6) int f (int x) {
+      return x * x;
+   }
+
+label l3
+pop t11
+pop x
+t12 = x * x
+push t12
+jmp t11
